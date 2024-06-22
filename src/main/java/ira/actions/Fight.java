@@ -1,8 +1,11 @@
 package ira.actions;
 
 
-public class Fight extends Thread {
+public class Fight implements Runnable {
 
+    @Override
+    public void run() {
 
+    }
 
 }
