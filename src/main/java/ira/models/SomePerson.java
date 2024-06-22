@@ -1,12 +1,12 @@
 package ira.models;
 
-import ira.enums.EnumFightStatus;
+import ira.enums.EnumSomeStatus;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class AnythingPerson {
+public abstract class SomePerson {
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * ЗНАЧЕНИЯ МОГУТ ИЗМЕНЯТЬСЯ! ВСЕ ЗАВИСИТ ОТ ТОГО НА СКОЛЬКО УМНОЖАЕТСЯ (Math.random)!
@@ -20,12 +20,12 @@ public abstract class AnythingPerson {
     private String name;
     private double power, health, agility, defence, accuracy, money;
     private boolean isAlive;
-    private EnumFightStatus fightStatus;
+    private EnumSomeStatus fightStatus;
 
-    public void attack(AnythingPerson target) {
+    public void attack(SomePerson target) {
         double startHealth = target.getHealth();
         double tempPower = this.getPower();
-        if (target.getFightStatus() == EnumFightStatus.IN_DEFENCES) {
+        if (target.getFightStatus() == EnumSomeStatus.IN_DEFENCES) {
             double tempPowerInDef = this.getPower();
             int stackDef = (int) target.getDefence()/100;
             double xDef = 1;
@@ -38,7 +38,7 @@ public abstract class AnythingPerson {
             System.out.println(
                     target.getName() + " защитился! " + this.getName() + " нанес всего " + tempPowerInDef + " урона!\n"
                     + " У " + target.getName() + " осталось " + startHealth + " здоровья!");
-            target.setFightStatus(EnumFightStatus.WITHOUT_STATUS);
+            target.setFightStatus(EnumSomeStatus.WITHOUT_STATUS);
             if (startHealth <= 0) {
                 target.setAlive(false);
                 System.out.println(target.getName() + " повержен...");
@@ -68,9 +68,9 @@ public abstract class AnythingPerson {
     }
 
     public void defend() {
-        this.setFightStatus(EnumFightStatus.IN_DEFENCES);
+        this.setFightStatus(EnumSomeStatus.IN_DEFENCES);
     }
 
-    public void trade(AnythingPerson target) {}
+    public void trade(SomePerson target) {}
 
 }

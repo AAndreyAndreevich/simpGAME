@@ -1,6 +1,7 @@
 package ira.actions;
 
-public class Fight {
+
+public class Fight extends Thread {
 
 
 
