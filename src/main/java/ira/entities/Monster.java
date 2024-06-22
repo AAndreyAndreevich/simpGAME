@@ -2,7 +2,10 @@ package ira.entities;
 
 import ira.enums.EnumSomeStatus;
 import ira.models.SomePerson;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @EqualsAndHashCode(callSuper = true)
 @Data

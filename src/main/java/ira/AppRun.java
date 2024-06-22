@@ -3,6 +3,10 @@ package ira;
 import ira.entities.Monster;
 import ira.entities.Player;
 import ira.enums.EnumSomeStatus;
+import ira.models.SomeItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AppRun {
     public static void main(String[] args) {

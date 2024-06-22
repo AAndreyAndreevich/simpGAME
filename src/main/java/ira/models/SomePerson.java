@@ -1,7 +1,10 @@
 package ira.models;
 
 import ira.enums.EnumSomeStatus;
-import lombok.*;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 
 @Data
 @NoArgsConstructor
