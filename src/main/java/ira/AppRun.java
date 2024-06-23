@@ -1,5 +1,6 @@
 package ira;
 
+import ira.actions.Fight;
 import ira.entities.Monster;
 import ira.entities.Player;
 import ira.enums.EnumSomeStatus;
@@ -21,12 +22,12 @@ public class AppRun {
                 1000.0,
                 2000.0,
                 500.0,
-                1000.0,
+                500.0,
                 100.0,
                 2.0,
                 true,
                 EnumSomeStatus.WITHOUT_STATUS);
-        monster.defend();
-        player.attack(monster);
+
+        Fight.fight(player, monster);
     }
 }

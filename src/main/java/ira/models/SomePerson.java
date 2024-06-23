@@ -30,39 +30,43 @@ public abstract class SomePerson {
             tempPowerInDef*=xDef;
             startHealth-=tempPowerInDef;
             System.out.printf(
-                    "%s защитился! %s нанес всего %d урона!\nУ %s осталось %d здоровья!",
+                    "%s защитился! %s нанес всего %d урона!\nУ %s осталось %d здоровья!\n",
                     target.getName(), this.getName(), (int) tempPowerInDef, target.getName(), (int) startHealth);
-            target.setSomeStatus(EnumSomeStatus.WITHOUT_STATUS);
+            target.setSomeStatus(EnumSomeStatus.IN_FIGHT);
             if (startHealth <= 0) {
                 target.setAlive(false);
-                System.out.printf("%s повержен...", target.getName());
+                System.out.printf("%s повержен...\n", target.getName());
             }
         } else if ((Math.random() * 100) > this.getAccuracy()) {
-            System.out.printf("%s промахнулся...следующий!", this.getName());
+            System.out.printf("%s промахнулся...следующий!\n", this.getName());
         } else if ((Math.random() * 1000) > this.getAgility()){
             startHealth -= tempPower;
             System.out.printf(
-                    "%s нанес %d урона!\nУ %s осталось %d здоровья!",
+                    "%s нанес %d урона!\nУ %s осталось %d здоровья!\n",
                     this.getName(), (int) tempPower, target.getName(), (int) startHealth);
             if (startHealth <= 0) {
                 target.setAlive(false);
-                System.out.printf("%s повержен...", target.getName());
+                System.out.printf("%s повержен...\n", target.getName());
             }
         } else {
             tempPower*=2;
             startHealth-=tempPower;
             System.out.printf(
-                    "Критическое попадание! %s нанес %d урона!\nУ %s осталось %d здоровья!",
+                    "Критическое попадание! %s нанес %d урона!\nУ %s осталось %d здоровья!\n",
                     this.getName(), (int) tempPower, target.getName(), (int) startHealth);
             if (startHealth <= 0) {
                 target.setAlive(false);
-                System.out.printf("%s повержен...", target.getName());
+                System.out.printf("%s повержен...\n", target.getName());
             }
         }
     }
 
     public void defend() {
-        this.setSomeStatus(EnumSomeStatus.IN_DEFENCES);
+        if (this.getSomeStatus() == EnumSomeStatus.IN_FIGHT) {
+            this.setSomeStatus(EnumSomeStatus.IN_DEFENCES);
+        } else {
+            System.out.println("Вы должны находиться в бою для этого действия");
+        }
     }
 
     public void trade(SomePerson target) {}
