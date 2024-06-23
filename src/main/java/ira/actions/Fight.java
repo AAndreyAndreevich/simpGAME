@@ -19,7 +19,7 @@ public class Fight {
             defender.setSomeStatus(EnumSomeStatus.IN_FIGHT);
             while(attacker.isAlive() && defender.isAlive()) {
                 System.out.printf("\n===Ход: %d===\n\n", turn);
-                if (attacker.getClass() == Player.class) {
+                if (attacker instanceof Player) {
                     System.out.printf("%s выберите действие:\n", attacker.getName());
                     System.out.println("1. Атаковать");
                     System.out.println("2. Защититься");
@@ -51,7 +51,6 @@ public class Fight {
                             defender.attack(attacker);
                         }
                     }
-                    turn++;
                 } else {
                     randForBot = (int) (Math.random() * 10);
                     System.out.printf("%s думает...\n", attacker.getName());
@@ -84,8 +83,8 @@ public class Fight {
                                 continue;
                         }
                     }
-                    turn++;
                 }
+                turn++;
             }
             attacker.setSomeStatus(EnumSomeStatus.WITHOUT_STATUS);
             defender.setSomeStatus(EnumSomeStatus.WITHOUT_STATUS);
