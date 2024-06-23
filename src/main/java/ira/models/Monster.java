@@ -1,15 +1,17 @@
-package ira.entities;
+package ira.models;
 
 import ira.enums.EnumSomeStatus;
 import ira.models.SomePerson;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class Player extends SomePerson {
+public class Monster extends SomePerson {
 
     private String name;
     private double power, health, agility, defence, accuracy, money;

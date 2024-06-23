@@ -1,6 +1,6 @@
 package ira.actions;
 
-import ira.entities.Player;
+import ira.models.Player;
 import ira.enums.EnumSomeStatus;
 import ira.models.SomePerson;
 

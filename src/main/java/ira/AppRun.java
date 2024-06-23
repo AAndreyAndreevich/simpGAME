@@ -1,8 +1,8 @@
 package ira;
 
 import ira.actions.Fight;
-import ira.entities.Monster;
-import ira.entities.Player;
+import ira.models.Monster;
+import ira.models.Player;
 import ira.enums.EnumSomeStatus;
 
 public class AppRun {
