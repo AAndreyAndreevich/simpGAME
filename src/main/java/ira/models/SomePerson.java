@@ -11,15 +11,6 @@ import lombok.Data;
 @AllArgsConstructor
 public abstract class SomePerson {
 
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * ЗНАЧЕНИЯ МОГУТ ИЗМЕНЯТЬСЯ! ВСЕ ЗАВИСИТ ОТ ТОГО НА СКОЛЬКО УМНОЖАЕТСЯ (Math.random)!
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * Максимальные значения для характеристик(выше не имеет смысла ставить при инициализации):
-     * agility(ловкость, для шанса критического удара): 1000,
-     * accuracy(меткость, для шанса попадания): 100,
-     * defence(защита, для поглощения урона): 1000
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
     private String name;
     private double power, health, agility, defence, accuracy, money;
     private boolean isAlive;
@@ -38,34 +29,34 @@ public abstract class SomePerson {
             }
             tempPowerInDef*=xDef;
             startHealth-=tempPowerInDef;
-            System.out.println(
-                    target.getName() + " защитился! " + this.getName() + " нанес всего " + tempPowerInDef + " урона!\n"
-                    + " У " + target.getName() + " осталось " + startHealth + " здоровья!");
+            System.out.printf(
+                    "%s защитился! %s нанес всего %d урона!\nУ %s осталось %d здоровья!",
+                    target.getName(), this.getName(), (int) tempPowerInDef, target.getName(), (int) startHealth);
             target.setFightStatus(EnumSomeStatus.WITHOUT_STATUS);
             if (startHealth <= 0) {
                 target.setAlive(false);
-                System.out.println(target.getName() + " повержен...");
+                System.out.printf("%s повержен...", target.getName());
             }
         } else if ((Math.random() * 100) > this.getAccuracy()) {
-            System.out.println(this.getName() + " промахнулся...следующий!");
+            System.out.printf("%s промахнулся...следующий!", this.getName());
         } else if ((Math.random() * 1000) > this.getAgility()){
             startHealth -= tempPower;
-            System.out.println(
-                    this.getName() + " нанес " + tempPower + " урона!\n"
-                    + " У " + target.getName() + " осталось " + startHealth + " здоровья!");
+            System.out.printf(
+                    "%s нанес %d урона!\nУ %s осталось %d здоровья!",
+                    this.getName(), (int) tempPower, target.getName(), (int) startHealth);
             if (startHealth <= 0) {
                 target.setAlive(false);
-                System.out.println(target.getName() + " повержен...");
+                System.out.printf("%s повержен...", target.getName());
             }
         } else {
             tempPower*=2;
             startHealth-=tempPower;
-            System.out.println(
-                    "Критическое попадание! " + this.getName() + " нанес " + tempPower + " урона!\n"
-                    + " У " + target.getName() + " осталось " + startHealth + " здоровья!");
+            System.out.printf(
+                    "Критическое попадание! %s нанес %d урона!\nУ %s осталось %d здоровья!",
+                    this.getName(), (int) tempPower, target.getName(), (int) startHealth);
             if (startHealth <= 0) {
                 target.setAlive(false);
-                System.out.println(target.getName() + " повержен...");
+                System.out.printf("%s повержен...", target.getName());
             }
         }
     }
