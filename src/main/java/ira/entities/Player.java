@@ -14,6 +14,6 @@ public class Player extends SomePerson {
     private String name;
     private double power, health, agility, defence, accuracy, money;
     private boolean isAlive;
-    private EnumSomeStatus fightStatus;
+    private EnumSomeStatus someStatus;
 
 }

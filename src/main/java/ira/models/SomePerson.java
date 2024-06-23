@@ -14,12 +14,12 @@ public abstract class SomePerson {
     private String name;
     private double power, health, agility, defence, accuracy, money;
     private boolean isAlive;
-    private EnumSomeStatus fightStatus;
+    private EnumSomeStatus someStatus;
 
     public void attack(SomePerson target) {
         double startHealth = target.getHealth();
         double tempPower = this.getPower();
-        if (target.getFightStatus() == EnumSomeStatus.IN_DEFENCES) {
+        if (target.getSomeStatus() == EnumSomeStatus.IN_DEFENCES) {
             double tempPowerInDef = this.getPower();
             int stackDef = (int) target.getDefence()/100;
             double xDef = 1;
@@ -32,7 +32,7 @@ public abstract class SomePerson {
             System.out.printf(
                     "%s защитился! %s нанес всего %d урона!\nУ %s осталось %d здоровья!",
                     target.getName(), this.getName(), (int) tempPowerInDef, target.getName(), (int) startHealth);
-            target.setFightStatus(EnumSomeStatus.WITHOUT_STATUS);
+            target.setSomeStatus(EnumSomeStatus.WITHOUT_STATUS);
             if (startHealth <= 0) {
                 target.setAlive(false);
                 System.out.printf("%s повержен...", target.getName());
@@ -62,7 +62,7 @@ public abstract class SomePerson {
     }
 
     public void defend() {
-        this.setFightStatus(EnumSomeStatus.IN_DEFENCES);
+        this.setSomeStatus(EnumSomeStatus.IN_DEFENCES);
     }
 
     public void trade(SomePerson target) {}
