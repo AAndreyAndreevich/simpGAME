@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public enum EnumTypeItem {
 
+    WITHOUT_TYPE("Нужно оказалось просто"),
     POTION("Зелье"),
     WEAPON("Оружие"),
     ARMOR("Броня");
