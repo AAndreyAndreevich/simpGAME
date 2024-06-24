@@ -33,7 +33,6 @@ public class Player extends SomePerson {
         }
         if (dopeItem.getType().equals(EnumTypeItem.WEAPON)) {
             if (this.getWeapon() != null) {
-                System.out.println("!!!");
                 this.unEquip(this.getWeapon());
             }
             this.setPower(this.getPower() + someItem.getPower());
@@ -46,7 +45,6 @@ public class Player extends SomePerson {
             this.getInventory().remove(someItem);
         } else if (dopeItem.getType().equals(EnumTypeItem.ARMOR)) {
             if (this.getArmor() != null) {
-                System.out.println("!!!");
                 this.unEquip(this.getWeapon());
             }
             this.setPower(this.getPower() + someItem.getPower());
