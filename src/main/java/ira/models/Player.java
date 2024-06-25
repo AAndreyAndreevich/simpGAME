@@ -35,6 +35,7 @@ public class Player extends SomePerson {
             this.setWeapon(someItem);
             someItem.setStatus(EnumItemStatus.EQUIPPED);
             this.getInventory().remove(someItem);
+            System.out.println(this.getWeapon().getName() + " экипирован");
         } else if (someItem.getType().equals(EnumTypeItem.ARMOR)) {
             if (this.getArmor() != null) {
                 this.unEquip(this.getArmor());
@@ -47,6 +48,7 @@ public class Player extends SomePerson {
             this.setArmor(someItem);
             someItem.setStatus(EnumItemStatus.EQUIPPED);
             this.getInventory().remove(someItem);
+            System.out.println(this.getArmor().getName() + " экипирован");
         } else {
             System.out.println("Этот предмет нельзя надеть...");
         }
@@ -62,6 +64,7 @@ public class Player extends SomePerson {
             this.setAgility(this.getAgility() - someItem.getAgility());
             this.setDefence(this.getDefence() - someItem.getDefence());
             this.setAccuracy(this.getPower() - someItem.getAccuracy());
+            System.out.println(someItem.getName() + " перемещен в инвентарь");
         } else if (someItem.equals(this.getWeapon())) {
             someItem.setStatus(EnumItemStatus.IN_INVENTORY);
             this.getInventory().add(someItem);
@@ -71,6 +74,7 @@ public class Player extends SomePerson {
             this.setAgility(this.getAgility() - someItem.getAgility());
             this.setDefence(this.getDefence() - someItem.getDefence());
             this.setAccuracy(this.getPower() - someItem.getAccuracy());
+            System.out.println(someItem.getName() + " перемещен в инвентарь");
         } else {
             System.out.println("На вас это не надето...");
         }

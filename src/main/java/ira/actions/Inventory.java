@@ -10,10 +10,20 @@ public class Inventory {
     public static void inventory(Player player) {
         String currentCommand;
         String currentItem;
+        System.out.print(
+                "\nВыберите нужное действие с инвентарем:\n" +
+                        "1. Посмотреть содержимое инвентаря\n" +
+                        "2. Выкинуть предмет из инвентаря\n" +
+                        "3. Надеть предмет\n" +
+                        "4. Убрать оружие\n" +
+                        "5. Снять броню\n" +
+                        "6. Посмотреть экипировку и баланс\n" +
+                        "7. Выйти\n"+
+                        "Вводите: "
+        );
         Scanner scanner = new Scanner(System.in);
-        System.out.println("пишите: ");
         currentCommand = scanner.nextLine();
-        while (!currentCommand.equals("6")) {
+        while (!currentCommand.equals("7")) {
             switch (currentCommand) {
                 case "1":
                     System.out.println(player.getInventory());
@@ -22,7 +32,7 @@ public class Inventory {
                     currentItem = scanner.nextLine();
                     for (SomeItem item : player.getInventory()) {
                         if (item.getName().equals(currentItem)) {
-                            player.equip(item);
+                            player.getInventory().remove(item);
                             break;
                         }
                     }
@@ -31,20 +41,18 @@ public class Inventory {
                     currentItem = scanner.nextLine();
                     for (SomeItem item : player.getInventory()) {
                         if (item.getName().equals(currentItem)) {
-                            player.getInventory().remove(item);
+                            player.equip(item);
                             break;
                         }
                     }
                     break;
-                case "4"://пока выдаются ошибки на снятие
-                    currentItem = scanner.nextLine();
-                    if (player.getArmor().getName().equals(currentItem)){
-                        player.unEquip(player.getArmor());
-                    } else if (player.getWeapon().getName().equals(currentItem)) {
-                        player.unEquip(player.getWeapon());
-                    }
+                case "4":
+                    player.unEquip(player.getWeapon());
                     break;
                 case "5":
+                    player.unEquip(player.getArmor());
+                    break;
+                case "6":
                     if (player.getArmor() != null) System.out.println("Броня : " + player.getArmor().getName());
                     else System.out.println("Нет брони");
                     if (player.getWeapon() != null) System.out.println("Оружие : " + player.getWeapon().getName());
@@ -52,10 +60,20 @@ public class Inventory {
                     System.out.println("Баланс : " + player.getMoney());
                     break;
                 default:
-                    System.out.println("Вы выбрали не то");
-                    continue;
+                    System.out.println("Данный пункт отсутствует, введите корректный вариант");
+                    break;
             }
-            System.out.println("пишите:");
+            System.out.print(
+                    "\nВыберите нужное действие с инвентарем:\n" +
+                            "1. Посмотреть содержимое инвентаря\n" +
+                            "2. Выкинуть предмет из инвентаря\n" +
+                            "3. Надеть предмет\n" +
+                            "4. Убрать оружие\n" +
+                            "5. Снять броню\n" +
+                            "6. Посмотреть экипировку и баланс\n" +
+                            "7. Выйти\n"+
+                            "Вводите: "
+            );
             currentCommand = scanner.nextLine();
         }
     }
