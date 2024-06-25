@@ -47,7 +47,7 @@ public class Inventory {
                 System.out.println("Оружие : " + player.getWeapon().getName());
                 System.out.println("Баланс : " + player.getMoney());
                 break;
-            case "56":
+            case "6":
                 System.out.println("Выход есть");
                 break;
             default:
