@@ -20,28 +20,40 @@ public class Inventory {
                     i++;
                     System.out.println(i + " : " + item.getName());
                 }
-                break;
-            case "2"://пока хз не работает я спать должен по имени предмет надевать
+                Inventory.inventory(player);
+            case "2":
                 currentItem = scanner.nextLine();
                 for (SomeItem item : player.getInventory()) {
-                    if (item.getName().equals(currentItem)) player.equip(item);
+                    if (item.getName().equals(currentItem)) {
+                        player.equip(item);
+                        Inventory.inventory(player);
+                    }
                 }
-                break;
+                Inventory.inventory(player);
             case "3":
                 currentItem = scanner.nextLine();
                 for (SomeItem item : player.getInventory()) {
-                    if (item.getName().equals(currentItem)) player.getInventory().remove(item);
+                    if (item.getName().equals(currentItem)) {
+                        player.getInventory().remove(item);
+                        Inventory.inventory(player);
+                    }
                 }
-                break;
+                Inventory.inventory(player);
             case "4":
+                currentItem = scanner.nextLine();
+                //снятие
+            case "5":
                 System.out.println("Броня : " + player.getArmor().getName());
                 System.out.println("Оружие : " + player.getWeapon().getName());
                 System.out.println("Баланс : " + player.getMoney());
+                break;
+            case "56":
+                System.out.println("Выход есть");
                 break;
             default:
                 System.out.println("Вы выбрали не то");
                 Inventory.inventory(player);
         }
-    }
 
+    }
 }

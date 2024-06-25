@@ -23,15 +23,7 @@ public class Player extends SomePerson {
     private SomeItem armor;
 
     public void equip(SomeItem someItem) {
-        SomeItem dopeItem = new SomeItem("Balda", 0,0,0,0,0,0, EnumTypeItem.WITHOUT_TYPE, EnumItemStatus.WITHOUT_STATUS);
-        for (SomeItem item : this.getInventory()) {
-            if (item.equals(someItem)) {
-                dopeItem = someItem;
-            } else {
-                System.out.println("Данного предмета нет в вашем инвентаре...");
-            }
-        }
-        if (dopeItem.getType().equals(EnumTypeItem.WEAPON)) {
+        if (someItem.getType().equals(EnumTypeItem.WEAPON)) {
             if (this.getWeapon() != null) {
                 this.unEquip(this.getWeapon());
             }
@@ -43,9 +35,9 @@ public class Player extends SomePerson {
             this.setWeapon(someItem);
             someItem.setStatus(EnumItemStatus.EQUIPPED);
             this.getInventory().remove(someItem);
-        } else if (dopeItem.getType().equals(EnumTypeItem.ARMOR)) {
+        } else if (someItem.getType().equals(EnumTypeItem.ARMOR)) {
             if (this.getArmor() != null) {
-                this.unEquip(this.getWeapon());
+                this.unEquip(this.getArmor());
             }
             this.setPower(this.getPower() + someItem.getPower());
             this.setHealth(this.getHealth() + someItem.getHealth());
@@ -55,8 +47,6 @@ public class Player extends SomePerson {
             this.setArmor(someItem);
             someItem.setStatus(EnumItemStatus.EQUIPPED);
             this.getInventory().remove(someItem);
-        } else if (dopeItem.getType().equals(EnumTypeItem.WITHOUT_TYPE)) {
-            System.out.println("У вас нет этого предмета...");
         } else {
             System.out.println("Этот предмет нельзя надеть...");
         }
