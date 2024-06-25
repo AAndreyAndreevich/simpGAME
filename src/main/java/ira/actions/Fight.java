@@ -3,11 +3,13 @@ package ira.actions;
 import ira.models.Player;
 import ira.enums.EnumSomeStatus;
 import ira.models.SomePerson;
+import lombok.SneakyThrows;
 
 import java.util.Scanner;
 
 public class Fight {
 
+    @SneakyThrows
     public static void fight(SomePerson attacker, SomePerson defender) {
         Scanner scanner = new Scanner(System.in);
         Thread thread = new Thread(() -> {
@@ -89,8 +91,8 @@ public class Fight {
             attacker.setSomeStatus(EnumSomeStatus.WITHOUT_STATUS);
             defender.setSomeStatus(EnumSomeStatus.WITHOUT_STATUS);
         });
-
         thread.start();
+        thread.join();
     }
 
 }
