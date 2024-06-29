@@ -22,6 +22,10 @@ public class Player extends SomePerson {
     private SomeItem weapon;
     private SomeItem armor;
 
+    public void usePotion(SomeItem someItem) {
+        
+    }
+
     public void equip(SomeItem someItem) {
         if (someItem.getType().equals(EnumTypeItem.WEAPON)) {
             if (this.getWeapon() != null) {

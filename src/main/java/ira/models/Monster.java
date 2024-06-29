@@ -1,7 +1,6 @@
 package ira.models;
 
 import ira.enums.EnumSomeStatus;
-import ira.models.SomePerson;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
